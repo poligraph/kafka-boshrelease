@@ -18,14 +18,13 @@ case $1 in
     chown -H vcap:vcap /var/vcap/store/kafka_server
     chown -H vcap:vcap /var/vcap/sys/log/kafka_server
     chown -H vcap:vcap /var/vcap/sys/run/kafka_server
-    chown -H -R vcap:vcap /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/
     chown -H -R vcap:vcap /var/vcap/packages/kafka
 
-    cp /var/vcap/jobs/kafka_server/config/log4j.properties /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/config
-    cp /var/vcap/jobs/kafka_server/config/server.properties /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/config
+    cp /var/vcap/jobs/kafka_server/config/log4j.properties /var/vcap/packages/kafka/kafka/config
+    cp /var/vcap/jobs/kafka_server/config/server.properties /var/vcap/packages/kafka/kafka/config
 
-    exec chpst -u vcap:vcap /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/bin/kafka-server-start.sh \
-      /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/config/server.properties &
+    exec chpst -u vcap:vcap /var/vcap/packages/kafka/kafka/bin/kafka-server-start.sh \
+      /var/vcap/packages/kafka/kafka/config/server.properties &
 
     echo $! > ${PIDFILE}
     ;;
