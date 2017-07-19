@@ -20,14 +20,14 @@ case $1 in
     chown -H vcap:vcap /var/vcap/sys/run/zookeeper_server
     chown -H -R vcap:vcap /var/vcap/packages/kafka
 
-    cp /var/vcap/jobs/zookeeper_server/config/log4j.properties /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/config
-    cp /var/vcap/jobs/zookeeper_server/config/zookeeper.properties /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/config
+    cp /var/vcap/jobs/zookeeper_server/config/log4j.properties /var/vcap/packages/kafka/kafka/config
+    cp /var/vcap/jobs/zookeeper_server/config/zookeeper.properties /var/vcap/packages/kafka/kafka/config
 
     echo <%= index + 1 %> > /var/vcap/store/zookeeper_server/myid
     chown -H vcap:vcap /var/vcap/store/zookeeper_server/myid
 
-    exec chpst -u vcap:vcap /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/bin/zookeeper-server-start.sh \
-      /var/vcap/packages/kafka/kafka_2.11-0.10.1.0/config/zookeeper.properties &
+    exec chpst -u vcap:vcap /var/vcap/packages/kafka/kafka/bin/zookeeper-server-start.sh \
+      /var/vcap/packages/kafka/kafka/config/zookeeper.properties &
 
     echo $! > ${PIDFILE}
 
