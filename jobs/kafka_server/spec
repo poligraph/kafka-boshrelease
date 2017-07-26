@@ -20,8 +20,3 @@ consumes:
   type: kafka
 - name: zookeeper
   type: zookeeper
-
-properties:
-  network:
-    description: "Kafka network"
-    default: ert
