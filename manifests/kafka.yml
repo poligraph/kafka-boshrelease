@@ -27,8 +27,6 @@ instance_groups:
     persistent_disk_type: large
     networks:
       - name: default
-    properties:
-      network: default
   - name: kafka_node
     instances: 3
     azs: [z1, z2, z3]
@@ -43,7 +41,6 @@ instance_groups:
       properties:
         auto_create_topics: true
         default_replication_factor: 1
-        network: default
     vm_type: large
     cloud_properties:
       tags:
